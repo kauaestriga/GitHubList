@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="default_padding">12dp</dimen>
+    <dimen name="default_start_margin">12dp</dimen>
+    <dimen name="default_end_margin">12dp</dimen>
+    <dimen name="default_top_margin">12dp</dimen>
+    <dimen name="title_size">16sp</dimen>
+    <dimen name="description_size">12sp</dimen>
+    <dimen name="counter_size">18sp</dimen>
+    <dimen name="profile_size">48dp</dimen>
+    <dimen name="pr_profile_size">40dp</dimen>
+    <dimen name="username_size">12sp</dimen>
+    <dimen name="pr_username_size">10sp</dimen>
+    <dimen name="fullname_size">10sp</dimen>
+    <dimen name="pr_fullname_size">8sp</dimen>
+</resources>

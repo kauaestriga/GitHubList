@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/default_padding"
+    android:paddingStart="@dimen/default_padding"
+    android:paddingEnd="@dimen/default_padding">
+
+    <TextView
+        android:id="@+id/pullRequestTitle"
+        style="@style/title_style"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Titulo do pull request" />
+
+    <TextView
+        android:id="@+id/pullRequestDescription"
+        style="@style/description_text_style"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/pullRequestTitle"
+        app:layout_constraintStart_toStartOf="@+id/pullRequestTitle"
+        app:layout_constraintTop_toBottomOf="@+id/pullRequestTitle"
+        tools:text="@string/mussum_ipsum" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/pullRequestProfile"
+        android:layout_width="@dimen/pr_profile_size"
+        android:layout_height="@dimen/pr_profile_size"
+        android:layout_marginTop="@dimen/default_top_margin"
+        android:src="@drawable/profile_default"
+        app:layout_constraintStart_toStartOf="@+id/pullRequestDescription"
+        app:layout_constraintTop_toBottomOf="@+id/pullRequestDescription" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="@dimen/default_start_margin"
+        app:layout_constraintBottom_toBottomOf="@+id/pullRequestProfile"
+        app:layout_constraintStart_toEndOf="@+id/pullRequestProfile"
+        app:layout_constraintTop_toTopOf="@+id/pullRequestProfile">
+
+        <TextView
+            android:id="@+id/pullRequestUsername"
+            style="@style/username_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="username" />
+
+        <TextView
+            android:id="@+id/pullRequestFullName"
+            style="@style/fullname_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Full name" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="@color/line_color"
+        android:layout_marginTop="@dimen/default_top_margin"
+        app:layout_constraintEnd_toEndOf="@+id/pullRequestDescription"
+        app:layout_constraintStart_toStartOf="@+id/pullRequestProfile"
+        app:layout_constraintTop_toBottomOf="@+id/pullRequestProfile" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="@dimen/default_padding"
+    android:paddingEnd="@dimen/default_padding"
+    android:paddingTop="@dimen/default_padding">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profileItem"
+            android:layout_width="@dimen/profile_size"
+            android:layout_height="@dimen/profile_size"
+            android:src="@drawable/profile_default"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/usernameProfile"
+            style="@style/username_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="username" />
+
+        <TextView
+            android:id="@+id/fullnameProfile"
+            style="@style/fullname_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Full name" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/repositoryName"
+        style="@style/title_style"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout"
+        tools:text="Repository name" />
+
+    <TextView
+        android:id="@+id/descriptionText"
+        style="@style/description_text_style"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/repositoryName"
+        app:layout_constraintStart_toStartOf="@+id/repositoryName"
+        app:layout_constraintTop_toBottomOf="@+id/repositoryName"
+        tools:text="@string/mussum_ipsum" />
+
+    <TableRow
+        android:id="@+id/tableRow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="@+id/descriptionText"
+        app:layout_constraintStart_toStartOf="@+id/descriptionText"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionText">
+
+        <TextView
+            android:id="@+id/forksCounter"
+            style="@style/counter_infos_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="4dp"
+            app:drawableStartCompat="@drawable/ic_source_fork"
+            tools:text="640" />
+
+        <TextView
+            android:id="@+id/startsCounter"
+            style="@style/counter_infos_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_start_margin"
+            android:drawablePadding="4dp"
+            app:drawableStartCompat="@drawable/ic_star"
+            tools:text="98" />
+    </TableRow>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/default_padding"
+        android:background="@color/line_color"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="@+id/descriptionText"
+        app:layout_constraintTop_toBottomOf="@+id/tableRow" />
+</androidx.constraintlayout.widget.ConstraintLayout>
