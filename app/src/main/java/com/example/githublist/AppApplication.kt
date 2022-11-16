@@ -17,11 +17,9 @@ class AppApplication : Application() {
             androidLogger()
             androidContext(this@AppApplication)
             modules(
-                listOf(
-                    viewModelModule,
-                    repositoryModule,
-                    networkModule
-                )
+                networkModule,
+                repositoryModule,
+                viewModelModule
             )
         }
     }

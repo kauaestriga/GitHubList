@@ -1,34 +1,33 @@
 package com.example.githublist.ui.main
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.githublist.R
 import com.example.githublist.adapters.GithubRepositoryAdapter
-import com.example.githublist.utils.Constants
+import com.example.githublist.databinding.ActivityMainBinding
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
-    val mainViewModel: MainViewModel by viewModel()
+    private lateinit var binding: ActivityMainBinding
+    val viewModel by viewModel<MainViewModel>()
     val picasso: Picasso by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         getRepositories()
     }
 
     fun getRepositories() {
-        mainViewModel.getGithubRepository("Kotlin", "6")
+        viewModel.getGithubRepository("language:Java", "1")
 
         isLoadingObserver()
         errorObserver()
@@ -36,35 +35,35 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun isLoadingObserver() {
-        mainViewModel.isLoading.observe(this) {
+        viewModel.isLoading.observe(this@MainActivity) {
             if (it == true) {
-                repositoryProgressBar.visibility = View.VISIBLE
-                recyclerViewRepository.visibility = View.GONE
+                binding.repositoryProgressBar.visibility = View.VISIBLE
+                binding.recyclerViewRepository.visibility = View.GONE
             } else {
-                repositoryProgressBar.visibility = View.GONE
-                recyclerViewRepository.visibility = View.VISIBLE
+                binding.repositoryProgressBar.visibility = View.GONE
+                binding.recyclerViewRepository.visibility = View.VISIBLE
             }
         }
     }
 
     fun errorObserver() {
-        mainViewModel.messageError.observe(this) {
+        viewModel.messageError.observe(this@MainActivity) {
             if (!it.equals("")) {
-                Toast.makeText(this, it, Toast.LENGTH_LONG).show()
+                Toast.makeText(this@MainActivity, it, Toast.LENGTH_LONG).show()
             }
         }
     }
 
     fun completeObserver() {
-        mainViewModel.githubRepositories.observe(this) {
-            recyclerViewRepository.adapter = GithubRepositoryAdapter(it, picasso) {
+        viewModel.githubRepositories.observe(this@MainActivity) {
+            binding.recyclerViewRepository.adapter = GithubRepositoryAdapter(it, picasso) {
 //                val intent = Intent(this, PullRequestActivity::class.java)
 //                intent.putExtra(Constants.REPOSITORY_ITEM, it)
 //                startActivity(intent)
 //                finish()
-                Toast.makeText(this, it.username, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MainActivity, it.name, Toast.LENGTH_SHORT).show()
             }
-            recyclerViewRepository.layoutManager = LinearLayoutManager(this)
+            binding.recyclerViewRepository.layoutManager = LinearLayoutManager(this@MainActivity)
         }
     }
 }

@@ -1,13 +1,17 @@
 package com.example.githublist.repository
 
 import com.example.githublist.api.GithubService
+import com.example.githublist.di.networkModule
 import com.example.githublist.model.GithubRepositoryPayload
 import com.example.githublist.model.GithubRepositoryResponse
+import org.koin.java.KoinJavaComponent.inject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class GithubRepositoryImpl(private val githubService: GithubService) : GithubRepository {
+class GithubRepositoryImpl(
+    val githubService: GithubService
+) : GithubRepository {
 
     override fun getGithubRepository(
         language: String,
@@ -23,7 +27,7 @@ class GithubRepositoryImpl(private val githubService: GithubService) : GithubRep
                     response: Response<GithubRepositoryResponse>
                 ) {
                     if (response.isSuccessful) {
-                        onComplete(response.body()?.content)
+                        onComplete(response.body()?.items)
                     } else {
                         onError(Throwable("Não foi possível carregar os repositórios"))
                     }
