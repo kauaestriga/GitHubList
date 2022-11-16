@@ -13,4 +13,5 @@
     <dimen name="pr_username_size">10sp</dimen>
     <dimen name="fullname_size">10sp</dimen>
     <dimen name="pr_fullname_size">8sp</dimen>
+    <dimen name="margin_recycler_view">24dp</dimen>
 </resources>

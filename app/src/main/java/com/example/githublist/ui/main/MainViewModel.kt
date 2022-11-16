@@ -2,7 +2,7 @@ package com.example.githublist.ui.main
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.githublist.model.GithubRepositoryPayload
+import com.example.githublist.model.main.GithubRepositoryPayload
 import com.example.githublist.repository.GithubRepository
 
 class MainViewModel(val githubRepository: GithubRepository) : ViewModel() {
@@ -14,7 +14,7 @@ class MainViewModel(val githubRepository: GithubRepository) : ViewModel() {
     fun getGithubRepository(language: String, page: String) {
         isLoading.value = true
 
-        githubRepository.getGithubRepository(
+        githubRepository.getGithubRepositories(
             language = language,
             page = page,
             {

@@ -5,6 +5,7 @@ import com.example.githublist.api.GithubService
 import com.example.githublist.repository.GithubRepository
 import com.example.githublist.repository.GithubRepositoryImpl
 import com.example.githublist.ui.main.MainViewModel
+import com.example.githublist.ui.prlist.PullRequestsViewModel
 import com.squareup.picasso.OkHttp3Downloader
 import com.squareup.picasso.Picasso
 import okhttp3.OkHttpClient
@@ -53,5 +54,8 @@ val repositoryModule = module {
 val viewModelModule = module {
     viewModel {
         MainViewModel(get())
+    }
+    viewModel {
+        PullRequestsViewModel(get())
     }
 }

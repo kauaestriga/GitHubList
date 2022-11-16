@@ -1,11 +1,10 @@
-package com.example.githublist.adapters
+package com.example.githublist.ui.main
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.githublist.databinding.RepositoryItemBinding
-import com.example.githublist.model.GithubRepositoryPayload
+import com.example.githublist.model.main.GithubRepositoryPayload
 import com.squareup.picasso.Picasso
 
 class GithubRepositoryAdapter(
@@ -35,10 +34,10 @@ class GithubRepositoryAdapter(
                 binding.descriptionText.text = this.description
                 binding.forksCounter.text = this.forks_count
                 binding.startsCounter.text = this.stargazers_count
-                binding.usernameProfile.text = this.owner?.login ?: ""
+                binding.usernameProfile.text = this.owner.login
                 binding.fullnameProfile.text = this.full_name
 
-                picasso.load(this.owner?.avatar_url).into(binding.profileItem)
+                picasso.load(this.owner.avatar_url).into(binding.profileItem)
                 binding.root.setOnClickListener { clickListener(this) }
             }
         }

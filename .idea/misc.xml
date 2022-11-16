@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/drawable/ic_star.xml" value="0.2845" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33229166666666665" />
+        <entry key="app/src/main/res/layout/activity_pull_requests.xml" value="0.322463768115942" />
         <entry key="app/src/main/res/layout/pull_request_item.xml" value="0.322463768115942" />
         <entry key="app/src/main/res/layout/repository_item.xml" value="0.33229166666666665" />
       </map>

@@ -1,12 +1,14 @@
 package com.example.githublist.ui.main
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.githublist.adapters.GithubRepositoryAdapter
 import com.example.githublist.databinding.ActivityMainBinding
+import com.example.githublist.ui.prlist.PullRequestsActivity
+import com.example.githublist.utils.Constants
 import com.squareup.picasso.Picasso
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -55,13 +57,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun completeObserver() {
-        viewModel.githubRepositories.observe(this@MainActivity) {
+        viewModel.githubRepositories.observe(this@MainActivity) { it ->
             binding.recyclerViewRepository.adapter = GithubRepositoryAdapter(it, picasso) {
-//                val intent = Intent(this, PullRequestActivity::class.java)
-//                intent.putExtra(Constants.REPOSITORY_ITEM, it)
-//                startActivity(intent)
-//                finish()
-                Toast.makeText(this@MainActivity, it.name, Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, PullRequestsActivity::class.java)
+                intent.putExtra(Constants.REPOSITORY_ITEM, it)
+                startActivity(intent)
             }
             binding.recyclerViewRepository.layoutManager = LinearLayoutManager(this@MainActivity)
         }
